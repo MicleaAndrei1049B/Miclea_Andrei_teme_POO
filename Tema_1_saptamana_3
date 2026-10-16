@@ -1,0 +1,63 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+using namespace std;
+
+
+class Inchisoare
+{
+private:
+    const int id;
+    int nr_celule;
+    int nr_prizonieri;
+
+public:
+    static int nr_inchisori;
+
+    Inchisoare(int c) : id(++nr_inchisori)
+    {
+        nr_celule = c;
+        nr_prizonieri = 5;
+    }
+
+    Inchisoare(int c, int p) : id(++nr_inchisori)
+    {
+        nr_celule = c;
+        nr_prizonieri = p;
+    }
+
+    Inchisoare(int c, int p, float* v) : id(++nr_inchisori)
+    {
+        nr_celule = c;
+        nr_prizonieri = p + v[0];
+    }
+
+    void afisare()
+    {
+        cout << endl << "Sediu: " << id;
+        cout << endl << "Numar celule: " << nr_celule;
+        cout << endl << "Numar prizonieri: " << nr_prizonieri;
+        cout << endl;
+    }
+};
+
+int Inchisoare::nr_inchisori = 0;
+
+int main()
+{
+    Inchisoare inchisoare(10);
+    inchisoare.afisare();
+
+    Inchisoare celule(20, 8);
+    celule.afisare();
+
+    float v[3] = {1, 2, 3};
+
+    Inchisoare prizonieri(30, 12, v);
+    prizonieri.afisare();
+
+    cout << endl << "Am structurat ";
+    cout << Inchisoare::nr_inchisori;
+    cout << " inchisori!";
+
+    
+}
